@@ -1,21 +1,57 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component,  useState } from "react";
+import { View, SafeAreaView, StyleSheet, Text , TextInput, TouchableOpacity } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+const App = () =>{
+    
+
+    const [numero, setNumero] = useState(0)
+    return(
+        <View style={estilos.paraelview}>
+
+            <Text style={estilos.paratext}>Hola a todos , veamos como sumar</Text>
+
+            <View style={estilos.viewhijo}>
+                <TouchableOpacity onPress={()=>setNumero(numero - 1)}>
+                    <Text style={estilos.textnumeros}>-</Text>
+                </TouchableOpacity>
+
+                <Text style={estilos.textnumeros}>{numero}</Text>
+
+                <TouchableOpacity onPress={()=>setNumero(numero + 1)}>
+                    <Text style={estilos.textnumeros}>+</Text>
+                </TouchableOpacity>
+            </View>
+
+            
+
+        </View>
+    )
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+const estilos = StyleSheet.create({
+
+    paraelview : {
+        flex:1, 
+        justifyContent: 'center', 
+        alignItems:'center'
+    }, 
+    paratext:{
+            backgroundColor: 'black', 
+            color:'white'
+    }, 
+    viewhijo:{
+        flexDirection:"row"
+    }, 
+    textnumeros:{
+        fontSize:25, 
+        padding:4
+    }
+  
+})
+
+
+
+export default App;
